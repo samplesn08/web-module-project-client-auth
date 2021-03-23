@@ -28,7 +28,7 @@ export const Login = (props) => {
     }
     
     return (
-        <div>
+        <div className='main'>
             {isLoading ? <h2>Loading...</h2> : 
             <form onSubmit={handleLogin}>
                 <label>

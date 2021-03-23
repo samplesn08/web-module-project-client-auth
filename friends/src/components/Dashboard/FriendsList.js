@@ -42,28 +42,32 @@ export const FriendsList = (props) => {
     }
     
     return (
-        <div>
+        <div className='dashboard'>
             <h2>Your Friends</h2>
+            <div className='dashboard-friend-container'>
             {friends.map(friend => (
-                <div key={friend.id}>
+                <div className='dashboard-friend' key={friend.id}>
                     <h3>{friend.name}</h3>
                     <p>Age: {friend.age}</p>
                     <p>Email address: {friend.email}</p>
                 </div>
             ))}
+            </div>
             <h2>Add a New Friend:</h2>
-            <form onSubmit={addFriend}>
-                <label>
-                    <input type='text' name='name' value={newFriend.name} placeholder='Name:' onChange={handleChange}/>
-                </label>
-                <label>
-                    <input type='text' name='age' value={newFriend.age} placeholder='Age:' onChange={handleChange}/>
-                </label>
-                <label>
-                    <input type='text' name='email' value={newFriend.email} placeholder='Email:' onChange={handleChange}/>
-                </label>
-                <button>Add Friend</button>
-            </form>
+            <div className='form-container'>
+                <form className='form' onSubmit={addFriend}>
+                    <label>
+                        <input type='text' name='name' value={newFriend.name} placeholder='Name:' onChange={handleChange}/>
+                    </label>
+                    <label>
+                        <input type='text' name='age' value={newFriend.age} placeholder='Age:' onChange={handleChange}/>
+                    </label>
+                    <label>
+                        <input type='text' name='email' value={newFriend.email} placeholder='Email:' onChange={handleChange}/>
+                    </label>
+                    <button>Add Friend</button>
+                </form>
+            </div>
         </div>
     )
 }
