@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {axiosWithAuth} from '../axiosWithAuth/axiosWithAuth';
+import {axiosWithAuth} from '../../utilities/axiosWithAuth';
 
 export const Login = (props) => {
     const [credentials, setCredentials] = useState({});
@@ -10,8 +10,8 @@ export const Login = (props) => {
         setIsLoading(true)
         axiosWithAuth().post('http://localhost:5000/api/login', credentials)
         .then(res => {
-            localStorage.setItem('token', res.data.token);
-            props.history.push('/dashboard');
+            localStorage.setItem('token', res.data.payload);
+            props.history.push('/friendslist');
             setIsLoading(false)
         })
         .catch(err => {
@@ -26,6 +26,7 @@ export const Login = (props) => {
             [e.target.name]: e.target.value,
         })
     }
+    
     return (
         <div>
             {isLoading ? <h2>Loading...</h2> : 
